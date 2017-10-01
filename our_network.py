@@ -55,7 +55,7 @@ class Net(nn.Module):
         out = self.pool3(self.relu3(self.bn3(self.conv3(out))))  
         out = self.pool4(self.relu4(self.bn4(self.conv4(out))))
         out = self.relu5(self.fc3(self.fc2(self.fc1(out)))) #many fc layers
-        #out = torch.squeeze(F.avg_pool2d(out), (1,16))) #haria falta para que queden de 1x1?
+        out = torch.squeeze(F.avg_pool2d(out), (1,16))) #haria falta para que queden de 1x1? yo creo que si
         out = self.fclast(out)
         out = self.softmax(out) 
         return out
